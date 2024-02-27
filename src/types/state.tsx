@@ -31,12 +31,20 @@ export function reducer(state: State, action: Action): State {
 				contrastRatio: action.value,
 			}
 		case 'set-theme-color-count':
+			const x = [];
+			for (let index = 0; index < action.value; index++) {
+				if (state.themeColors[index]) {
+					x.push(state.themeColors[index]);
+				} else {
+					x.push("#fff");
+				}
+			}
 			return {
 				...state,
 				themeColorCount: action.value,
+				themeColors: x,
 			};
 		case 'set-theme-color':
-			console.info(`Attempting to set theme color [${action.index}] to ${action.value}`);
 			const themeColors = [];
 			for (let index = 0; index < state.themeColorCount; index++) {
 				themeColors[index] = (index === action.index ? action.value : state.themeColors[index]);
