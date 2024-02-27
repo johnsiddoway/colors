@@ -59,7 +59,7 @@ export function ButtonSwatchList(props: Props) {
 		return <ButtonSwatch key={index} backgroundColor={value} color={props.foregroundColor} contrastRatio={props.contrastRatio} buttonText={`Theme Color ${index + 1}`} />
 	});
 	return <div>
-		<h2 style={{ margin: '0 0 1rem 0' }}>Buttons</h2>
+		<h2>Buttons</h2>
 		{buttons}
 	</div>;
 };

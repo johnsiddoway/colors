@@ -17,6 +17,7 @@ export function PickerPanel({ foregroundColor, backgroundColor, contrastRatio, t
 	}
 
 	return <div className="pickerPanel">
+		<h2>Base Colors</h2>
 		<ColorPicker color={foregroundColor} onChange={(value: string) => dispatch({ type: 'set-foreground-color', value })} label="Text" />
 		<ColorPicker color={backgroundColor} onChange={(value: string) => dispatch({ type: 'set-background-color', value })} label="Background" />
 		<ContrastPicker value={contrastRatio} onChange={(value: number) => dispatch({ type: "set-contrast-ratio", value: value })} label="Contrast Ratio" />
