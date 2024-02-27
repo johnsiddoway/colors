@@ -1,4 +1,4 @@
-import { Color, HSV, RGB } from "./color";
+import { Color, HSV, RGB } from "../../types/color";
 
 const count = 12;
 
@@ -32,7 +32,7 @@ const hsvToRgb = (hsv: HSV): RGB => {
     return { r, g, b };
 }
 
-export default function SwatchPanel({ color }: { color: Color }) {
+export function SwatchPanel({ color }: { color: Color }) {
     const increments = 360 / count; // How far apart should the colors be on the color wheel?
 
     const swatches = range(count).map((index) => {

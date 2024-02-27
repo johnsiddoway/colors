@@ -1,13 +1,16 @@
-import { ColorPicker, useColor } from "react-color-palette";
-import SwatchPanel from './swatch-panel';
+import { useReducer } from 'react';
+import { SwatchPanel } from './components/swatch-panel/swatch-panel';
+import { PickerPanel } from "./components/picker-panel/picker-panel";
+import { reducer } from "./types/state";
 import './app.scss'
-import "react-color-palette/lib/css/styles.css";
 
-export default function App() {
-  const [color, setColor] = useColor("hex", "#F16B0E"); // #F10E23
+export function App() {
+	const [state, dispatch] = useReducer(reducer, { foregroundColor: '#292521', backgroundColor: '#fff', themeColorCount: 1, themeColors: ['#daa520'] });
 
-  return <>
-    <ColorPicker width={500} height={400} color={color} onChange={setColor} />
-    <SwatchPanel {...{ color }} />
-  </>;
-};
+	document.body.style.backgroundColor = state.backgroundColor;
+
+	return <>
+		<PickerPanel { ...state } dispatch={dispatch} />
+		<SwatchPanel { ...state } />
+	</>;
+}
