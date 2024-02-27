@@ -9,13 +9,8 @@ function PopoverPicker({ color, onChange }: { color: string, onChange: (color: s
 	const close = useCallback(() => toggle(false), []);
 	useClickOutside(popover, close);
 
-	return <div className="picker">
-		<div
-			className="swatch"
-			style={{ backgroundColor: color }}
-			onClick={() => toggle(true)}
-		/>
-
+	return <div className="popoverPicker">
+		<div className="swatch" style={{ backgroundColor: color }} onClick={() => toggle(true)} />
 		{isOpen && (
 			<div className="popover" ref={popover}>
 				<HexAlphaColorPicker color={color} onChange={onChange} />
@@ -25,7 +20,7 @@ function PopoverPicker({ color, onChange }: { color: string, onChange: (color: s
 }
 
 export function ColorPicker({ color, onChange, label }: { color: string, onChange: (color: string) => void, label: string }) {
-	return <div className="colorPicker">
+	return <div className="picker">
 		<label htmlFor={label}>{label}</label>
 		<div className="inputGroup">
 			<input id={label} value={color} onChange={(e) => onChange(e.target.value)} />

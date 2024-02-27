@@ -5,12 +5,12 @@ import { reducer } from "./types/state";
 import './app.scss'
 
 export function App() {
-	const [state, dispatch] = useReducer(reducer, { foregroundColor: '#292521', backgroundColor: '#fff', themeColorCount: 1, themeColors: ['#daa520'] });
+	const [state, dispatch] = useReducer(reducer, { foregroundColor: '#292521', backgroundColor: '#fff', contrastRatio: 7, themeColorCount: 1, themeColors: ['#daa520'] });
 
 	document.body.style.backgroundColor = state.backgroundColor;
 
 	return <>
-		<PickerPanel { ...state } dispatch={dispatch} />
-		<SwatchPanel { ...state } />
+		<PickerPanel {...state} dispatch={dispatch} />
+		<SwatchPanel {...state} />
 	</>;
 }
