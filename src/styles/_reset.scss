@@ -1,0 +1,98 @@
+// Mostly following the styles from this blog post,
+// as I also want to keep this as un-opinionated as possible.
+// https://keithjgrant.com/posts/2024/01/my-css-resets/
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	margin: unset;
+}
+
+button,
+input,
+optgroup,
+textarea,
+select {
+	margin: 0;
+	font: inherit;
+}
+
+img,
+picture,
+svg,
+canvas {
+	display: block;
+	max-inline-size: 100%;
+	block-size: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+	animation-duration: 0.01ms !important;
+	animation-iteration-count: 1 !important;
+	transition-duration: 0.01ms !important;
+	scroll-behavior: auto !important;
+	}
+}
+
+%heading {
+	line-height: $headings-line-height;
+	margin-top: 0;
+	margin-bottom: $headings-margin-bottom;
+	font: inherit;
+}
+
+h1 {
+	@extend %heading;
+	font-size: $h1-font-size;
+}
+
+h2 {
+	@extend %heading;
+	font-size: $h2-font-size;
+}
+
+h3 {
+	@extend %heading;
+	font-size: $h3-font-size;
+}
+
+h4 {
+	@extend %heading;
+	font-size: $h4-font-size;
+}
+
+h5 {
+	@extend %heading;
+	font-size: $h5-font-size;
+}
+
+h6 {
+	@extend %heading;
+	font-size: $h6-font-size;
+}
+
+p {
+	margin-top: 0;
+	margin-bottom: $paragraph-margin-bottom;
+}
+
+ol,
+ul,
+dl {
+	margin-top: 0;
+	margin-bottom: 1rem;
+}
+
+ol ol,
+ul ul,
+ol ul,
+ul ol {
+	margin-bottom: 0;
+}

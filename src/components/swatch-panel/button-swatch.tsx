@@ -55,11 +55,18 @@ function ButtonSwatch(props: ButtonSwatchProps) {
 }
 
 export function ButtonSwatchList(props: Props) {
-	const buttons = props.themeColors.map((value, index) => {
+	const baseButtons = props.themeColors.map((value, index) => {
 		return <ButtonSwatch key={index} backgroundColor={value} color={props.foregroundColor} contrastRatio={props.contrastRatio} buttonText={`Theme Color ${index + 1}`} />
 	});
 	return <div>
 		<h2>Buttons</h2>
-		{buttons}
+		<div className="flex-with-gap">
+			<h3>Base Buttons</h3>
+			{baseButtons}
+		</div>
+		<div className="flex-with-gap">
+			<h3>Active Buttons</h3>
+		</div>
+
 	</div>;
 };

@@ -1,7 +1,12 @@
 @import "variables";
-@import "_container";
+@import "container";
 @import "mixins";
-@import "reboot";
+@import "reset";
+
+body {
+	font-family: $font-family-sans-serif;
+	line-height: $line-height-base;
+}
 
 #root {
 	display: flex;
@@ -93,4 +98,8 @@ main {
 		border: 1px solid currentColor;
 		padding: 0.5rem;
 	}
+}
+
+.flex-with-gap {
+	@include make-flex($column-gap: 0.5rem, $row-gap: 0.5rem);
 }
