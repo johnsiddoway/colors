@@ -1,11 +1,6 @@
-import { State } from "../../types/state";
-import { ButtonPanel } from "./button-panel";
+import { ButtonPanel, StateWithDispatch } from "./button-panel";
 
-export interface Props extends State {
-
-};
-
-export function SwatchPanel(props: Props) {
+export function SwatchPanel(props: StateWithDispatch) {
 	return <>
 		<ButtonPanel {...props} />
 	</>;

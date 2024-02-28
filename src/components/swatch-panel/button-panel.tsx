@@ -1,7 +1,7 @@
-import { CSSProperties } from "react";
+import { CSSProperties, useState } from "react";
 import { colord, extend } from "colord";
 import a11yPlugin from "colord/plugins/a11y";
-import { State } from "../../types/state";
+import { Action, State } from "../../types/state";
 
 extend([a11yPlugin]);
 
@@ -60,6 +60,16 @@ function ButtonExamples(props: State) {
 	</div>;
 }
 
+function ButtonStyles(props: StateWithDispatch) {
+	return <div className="picker">
+		<label htmlFor="hover">Hover Color Shift</label>
+		<div className="inputGroup">
+			<input id="hover" name="hover" type="range" value={props.hoverShift} onChange={(e) => props.dispatch({ type: 'set-hover-shift', value: parseInt(e.target.value) })} min={-100} max={100} step={5} />
+			<div>{props.hoverShift}</div>
+		</div>
+	</div>
+}
+
 function ContrastCheckers(props: State) {
 	const contrastCheckers = props.themeColors.map((value, index) => {
 		return <ContrastChecker key={index} backgroundColor={value} foregroundColor={props.foregroundColor} contrastRatio={props.contrastRatio} />;
@@ -87,11 +97,14 @@ function ContrastChecker({ backgroundColor, foregroundColor, contrastRatio }: { 
 	</div>;
 }
 
-export function ButtonPanel(props: State) {
+export interface StateWithDispatch extends State {
+	dispatch: React.Dispatch<Action>;
+}
+export function ButtonPanel(props: StateWithDispatch) {
 	return <div>
 		<h2>Buttons</h2>
 		<div className="row-with-gap">
-			<div>Button Style Selectors Go Here</div>
+			<div><ButtonStyles {...props} /></div>
 			<div><ContrastCheckers {...props} /></div>
 			<div><ButtonExamples {...props} /></div>
 		</div>
