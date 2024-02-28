@@ -1,5 +1,5 @@
 import { State } from "../../types/state";
-import { ButtonSwatchList } from "./button-swatch";
+import { ButtonPanel } from "./button-panel";
 
 export interface Props extends State {
 
@@ -7,6 +7,6 @@ export interface Props extends State {
 
 export function SwatchPanel(props: Props) {
 	return <>
-		<ButtonSwatchList {...props} />
+		<ButtonPanel {...props} />
 	</>;
 };

@@ -31,7 +31,11 @@ footer {
 
 main {
 	@extend %container;
-    @include make-flex($column-gap: 5rem, $align-items: inherit);
+	@include make-flex($column-gap: 5rem, $align-items: inherit);
+}
+
+.buttonPanel {
+	@include make-flex($column-gap: 5rem);
 }
 
 .picker {
@@ -100,6 +104,25 @@ main {
 	}
 }
 
-.flex-with-gap {
-	@include make-flex($column-gap: 0.5rem, $row-gap: 0.5rem);
+.row-with-gap {
+	@include make-flex($column-gap: 5rem, $row-gap: 5rem);
+}
+
+.column-with-gap {
+	@include make-flex($flex-direction: column, $column-gap: 0.5rem, $row-gap: 0.5rem);
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin-bottom: 0;
+	}
+}
+
+.h4-spacer {
+	position: relative;
+	display: block;
+	height: 2.25rem;
 }
