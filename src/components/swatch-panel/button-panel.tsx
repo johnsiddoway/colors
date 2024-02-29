@@ -1,9 +1,7 @@
-import { CSSProperties, useState } from "react";
-import { colord, extend } from "colord";
-import a11yPlugin from "colord/plugins/a11y";
+import { CSSProperties } from "react";
 import { Action, State } from "../../types/state";
-
-extend([a11yPlugin]);
+import Color from "color";
+import { RangePicker } from "../pickers/range-picker";
 
 interface ButtonSwatchProps {
 	backgroundColor: string;
@@ -41,6 +39,12 @@ function ButtonExamples(props: State) {
 	const baseButtons = props.themeColors.map((value, index) => {
 		return <Button key={index} backgroundColor={value} color={props.foregroundColor} contrastRatio={props.contrastRatio} buttonText={`Theme Color ${index + 1}`} />
 	});
+	const hoverButtons = props.themeColors.map((value, index) => {
+		const mixWith = props.hoverShift > 0 ? Color('#fff') : Color('#000');
+		const weight = Math.abs(props.hoverShift) / 100;
+		const backgroundColor = Color(value).mix(mixWith, weight).hex();
+		return <Button key={index} backgroundColor={backgroundColor} color={props.foregroundColor} contrastRatio={props.contrastRatio} buttonText={backgroundColor} />
+	});
 	return <div>
 		<h3>Examples</h3>
 		<div className="row-with-gap">
@@ -50,7 +54,7 @@ function ButtonExamples(props: State) {
 			</div>
 			<div className="column-with-gap">
 				<h4>Hover</h4>
-				{baseButtons}
+				{hoverButtons}
 			</div>
 			<div className="column-with-gap">
 				<h4>Active</h4>
@@ -61,13 +65,9 @@ function ButtonExamples(props: State) {
 }
 
 function ButtonStyles(props: StateWithDispatch) {
-	return <div className="picker">
-		<label htmlFor="hover">Hover Color Shift</label>
-		<div className="inputGroup">
-			<input id="hover" name="hover" type="range" value={props.hoverShift} onChange={(e) => props.dispatch({ type: 'set-hover-shift', value: parseInt(e.target.value) })} min={-100} max={100} step={5} />
-			<div>{props.hoverShift}</div>
-		</div>
-	</div>
+	return <>
+		<RangePicker id="hover" onChange={(value) => props.dispatch({ type: 'set-hover-shift', value: value })} value={props.hoverShift} />
+	</>;
 }
 
 function ContrastCheckers(props: State) {
@@ -84,7 +84,7 @@ function ContrastCheckers(props: State) {
 }
 
 function ContrastChecker({ backgroundColor, foregroundColor, contrastRatio }: { backgroundColor: string, foregroundColor: string, contrastRatio: number }) {
-	const ratio = colord(backgroundColor).contrast(foregroundColor);
+	const ratio = +(Color(backgroundColor).contrast(Color(foregroundColor)).toFixed(2));
 	const style: CSSProperties = {
 		display: "inline-block",
 		minWidth: "3.5rem",

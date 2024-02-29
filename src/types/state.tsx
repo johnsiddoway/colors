@@ -19,9 +19,9 @@ export const initialState: State = {
 	foregroundColor: "#292521",
 	backgroundColor: "#fff",
 	contrastRatio: 7,
-	themeColorCount: 2,
-	themeColors: ["#daa520", "#d1e7dd"],
-	hoverShift: 50,
+	themeColorCount: 3,
+	themeColors: ["#daa520", "#d1e7dd", "#0d6efd"],
+	hoverShift: 15,
 };
 
 export function reducer(state: State, action: Action): State {
