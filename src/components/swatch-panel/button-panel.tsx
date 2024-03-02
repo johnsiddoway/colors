@@ -103,7 +103,7 @@ export interface StateWithDispatch extends State {
 export function ButtonPanel(props: StateWithDispatch) {
 	return <div>
 		<h2>Buttons</h2>
-		<div className="row-with-gap">
+		<div className="buttonPanel">
 			<div><ButtonStyles {...props} /></div>
 			<div><ContrastCheckers {...props} /></div>
 			<div><ButtonExamples {...props} /></div>

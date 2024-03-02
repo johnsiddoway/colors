@@ -1,7 +1,7 @@
 import { Action, State } from "../../types/state";
-import { ColorPicker } from "./color-picker";
-import { ContrastPicker } from "./contrast-picker";
-import { CountPicker } from "./count-picker";
+import { ColorPicker } from "../pickers/color-picker";
+import { ContrastPicker } from "../pickers/contrast-picker";
+import { CountPicker } from "../pickers/count-picker";
 
 export interface Props extends State {
 	dispatch: React.Dispatch<Action>
