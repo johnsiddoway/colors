@@ -1,7 +1,6 @@
 @import "../../styles/mixins";
 
 .rangePicker {
-
     .inputGroup {
         @include make-flex();
     }
@@ -9,7 +8,7 @@
 
 .value {
     width: 2.25rem;
-    height: 2.25rem;
+    height: 2.375rem;
     display: flex;
     align-items: center;
     justify-content: center;

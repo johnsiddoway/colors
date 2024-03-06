@@ -1,11 +1,3 @@
-export type Action =
-	| { type: 'set-foreground-color', value: string }
-	| { type: 'set-background-color', value: string }
-	| { type: 'set-contrast-ratio', value: number }
-	| { type: 'set-theme-color-count', value: number }
-	| { type: 'set-theme-color', index: number, value: string }
-	| { type: 'set-hover-shift', value: number };
-
 export type State = {
 	foregroundColor: string;
 	backgroundColor: string;
@@ -13,6 +5,7 @@ export type State = {
 	themeColorCount: number;
 	themeColors: string[];
 	hoverShift: number;
+	activeShift: number;
 }
 
 export const initialState: State = {
@@ -21,8 +14,18 @@ export const initialState: State = {
 	contrastRatio: 7,
 	themeColorCount: 3,
 	themeColors: ["#daa520", "#d1e7dd", "#0d6efd"],
-	hoverShift: 15,
+	hoverShift: -15,
+	activeShift: -20,
 };
+
+export type Action =
+	| { type: 'set-foreground-color', value: string }
+	| { type: 'set-background-color', value: string }
+	| { type: 'set-contrast-ratio', value: number }
+	| { type: 'set-theme-color-count', value: number }
+	| { type: 'set-theme-color', index: number, value: string }
+	| { type: 'set-hover-shift', value: number }
+	| { type: 'set-active-shift', value: number };
 
 export function reducer(state: State, action: Action): State {
 	switch (action.type) {
@@ -69,6 +72,11 @@ export function reducer(state: State, action: Action): State {
 				...state,
 				hoverShift: action.value,
 			};
+		case 'set-active-shift':
+			return {
+				...state,
+				activeShift: action.value,
+			}
 		default:
 			return state;
 	}
