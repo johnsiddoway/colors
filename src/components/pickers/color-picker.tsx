@@ -23,7 +23,7 @@ export function ColorPicker({ color, onChange, label }: { color: string, onChang
 	return <div className="picker">
 		<label htmlFor={label}>{label}</label>
 		<div className="inputGroup">
-			<input id={label} value={color} onChange={(e) => onChange(e.target.value)} />
+			<input id={label} value={color} readOnly />
 			<PopoverPicker color={color} onChange={onChange} />
 		</div>
 	</div>;
