@@ -51,12 +51,12 @@ export function reducer(state: State, action: Action): State {
 			}
 		case 'set-theme-color-count':
 			const x = [];
+			const rotation = 360 / action.value;
+			let lastColor = '#cacaca';
 			for (let index = 0; index < action.value; index++) {
-				if (state.themeColors[index]) {
-					x.push(state.themeColors[index]);
-				} else {
-					x.push("#fff");
-				}
+				lastColor = state.themeColors[index]
+					?? Color(lastColor).rotate(rotation).hex().toLocaleLowerCase();
+				x.push(lastColor);
 			}
 			return {
 				...state,
