@@ -1,6 +1,6 @@
 import { useCallback, useRef, useState } from "react";
 import { useClickOutside } from "../../hooks/useClickOutside";
-import { HexAlphaColorPicker } from "react-colorful";
+import { HexColorPicker } from "react-colorful";
 
 function PopoverPicker({ color, onChange }: { color: string, onChange: (color: string) => void }) {
 	const popover = useRef();
@@ -13,7 +13,7 @@ function PopoverPicker({ color, onChange }: { color: string, onChange: (color: s
 		<div className="swatch" style={{ backgroundColor: color }} onClick={() => toggle(true)} />
 		{isOpen && (
 			<div className="popover" ref={popover}>
-				<HexAlphaColorPicker color={color} onChange={onChange} />
+				<HexColorPicker color={color} onChange={onChange} />
 			</div>
 		)}
 	</div>;

@@ -8,10 +8,9 @@ interface ButtonExampleProps {
 	borderColor: string;
 	contrastRatio: number;
 	buttonText: string;
-    log: boolean;
 }
 
-function ButtonExample({ backgroundColor, foregroundColor, borderColor, buttonText, contrastRatio, log }: ButtonExampleProps) {
+function ButtonExample({ backgroundColor, foregroundColor, borderColor, buttonText, contrastRatio }: ButtonExampleProps) {
 	const buttonStyle: CSSProperties = {
 		boxSizing: 'border-box',
 		width: '6rem',
@@ -29,16 +28,11 @@ function ButtonExample({ backgroundColor, foregroundColor, borderColor, buttonTe
 	};
 	return <div style={rowStyle}>
 		<button type="button" style={buttonStyle}>{buttonText}</button >
-		<ContrastChecker backgroundColor={backgroundColor} foregroundColor={foregroundColor} contrastRatio={contrastRatio} log={log} />
+		<ContrastChecker backgroundColor={backgroundColor} foregroundColor={foregroundColor} contrastRatio={contrastRatio} />
 	</div>;
 };
 
-function ContrastChecker({ backgroundColor, foregroundColor, contrastRatio, log }: { backgroundColor: string, foregroundColor: string, contrastRatio: number, log: boolean }) {
-    if (log) {
-        console.info(`Checking contrast between ${backgroundColor} and ${foregroundColor}`);
-        console.info(JSON.stringify(Color(backgroundColor)));
-        console.info(Color(backgroundColor).contrast(Color(foregroundColor)));
-    }
+function ContrastChecker({ backgroundColor, foregroundColor, contrastRatio }: { backgroundColor: string, foregroundColor: string, contrastRatio: number }) {
     const ratio = +(Color(backgroundColor).contrast(Color(foregroundColor)).toFixed(2));
 	const style: CSSProperties = {
 		display: 'flex',
@@ -61,17 +55,17 @@ const mix = (value: string, shift: number) => {
 export function ButtonExamples(props: State) {
 	const baseButtons = props.themeColors.map((value, index) => {
 		const borderColor = mix(value, props.borderShift);
-		return <ButtonExample key={index} log={true} backgroundColor={value} foregroundColor={props.foregroundColor} borderColor={borderColor} contrastRatio={props.contrastRatio} buttonText={value} />
+		return <ButtonExample key={index} backgroundColor={value} foregroundColor={props.foregroundColor} borderColor={borderColor} contrastRatio={props.contrastRatio} buttonText={value} />
 	});
 	const hoverButtons = props.themeColors.map((value, index) => {
 		const backgroundColor = mix(value, props.hoverShift);
 		const borderColor = mix(value, props.borderShift);
-		return <ButtonExample key={index} log={false} backgroundColor={backgroundColor} foregroundColor={props.foregroundColor} borderColor={borderColor} contrastRatio={props.contrastRatio} buttonText={backgroundColor} />
+		return <ButtonExample key={index} backgroundColor={backgroundColor} foregroundColor={props.foregroundColor} borderColor={borderColor} contrastRatio={props.contrastRatio} buttonText={backgroundColor} />
 	});
 	const activeButtons = props.themeColors.map((value, index) => {
 		const backgroundColor = mix(value, props.activeShift);
 		const borderColor = mix(value, props.borderShift);
-		return <ButtonExample key={index} log={false} backgroundColor={backgroundColor} foregroundColor={props.foregroundColor} borderColor={borderColor} contrastRatio={props.contrastRatio} buttonText={backgroundColor} />
+		return <ButtonExample key={index} backgroundColor={backgroundColor} foregroundColor={props.foregroundColor} borderColor={borderColor} contrastRatio={props.contrastRatio} buttonText={backgroundColor} />
 	});
 	return <div>
 		<h3>Examples</h3>
