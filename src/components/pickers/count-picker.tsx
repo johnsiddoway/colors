@@ -1,17 +1,17 @@
 export interface Props {
-	value: number,
-	label: string,
-	onChange: (count: number) => void,
+	value: number;
+	maxValue?: number;
+	label: string;
+	onChange: (count: number) => void;
 }
-export function CountPicker({ value, label, onChange }: Props) {
+export function CountPicker({ value, maxValue, label, onChange }: Props) {
+	const options = [...Array(maxValue ?? 12)].map((e, i) => <option key={i} value={i+1}>{i+1}</option>);
+
 	return <div className="picker">
 		<label htmlFor="count">{label}</label>
 		<div className="inputGroup">
 			<select name="count" id="count" value={value} onChange={(e) => onChange(parseInt(e.target.value))}>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-				<option value="4">4</option>
+				{options}
 			</select>
 		</div>
 	</div>;

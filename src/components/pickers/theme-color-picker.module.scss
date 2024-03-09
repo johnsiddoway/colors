@@ -1,0 +1,83 @@
+.picker {
+    position: relative;
+    outline: none;
+    * {
+        outline: none;
+    }
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+%row {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+%rowLeft {
+    width: 100%;
+    max-width: calc(100% - 2.375rem);
+    padding: 0.375rem 0.75rem;
+    color: currentColor;
+}
+
+%rowRight {
+    width: 25%;
+    max-width: 2.375rem;
+    height: 100%;
+    cursor: pointer;
+}
+
+.backgroundColorRow {
+    @extend %row;
+    &:focus-within,
+    &:focus-visible {
+        box-shadow: 0 0.25rem 0.5rem 0.25rem #495057;
+    }
+}
+
+.backgroundColorInput {
+    @extend %rowLeft;
+    border: 1px solid currentColor;
+}
+
+.backgroundColorSwatch {
+    @extend %rowRight;
+    position: relative;
+    border: 1px solid currentColor;
+    border-left: 0;
+}
+
+.backgroundColorPopup {
+    position: absolute;
+    top: 0;
+    left: calc(100% + 0.5rem);
+    border-radius: 9px;
+    z-index: 10;
+}
+
+.foregroundColorRow {
+    @extend %row;
+}
+
+.foregroundColorLabel {
+    @extend %rowLeft;
+    cursor: pointer;
+    user-select: none;
+}
+
+.foregroundColorInput {
+    @extend %rowRight;
+}
+
+.backgroundColorPopover {
+    position: absolute;
+    top: 0;
+    left: calc(100% + 0.5rem);
+    border-radius: 9px;
+    z-index: 10;
+}

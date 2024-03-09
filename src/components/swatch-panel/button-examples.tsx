@@ -1,5 +1,5 @@
 import Color from "color";
-import { State } from "../../types/state";
+import { State, ThemeColor } from "../../types/state";
 import { CSSProperties } from "react";
 
 interface ButtonExampleProps {
@@ -53,19 +53,23 @@ const mix = (value: string, shift: number) => {
 };
 
 export function ButtonExamples(props: State) {
-	const baseButtons = props.themeColors.map((value, index) => {
-		const borderColor = mix(value, props.borderShift);
-		return <ButtonExample key={index} backgroundColor={value} foregroundColor={props.foregroundColor} borderColor={borderColor} contrastRatio={props.contrastRatio} buttonText={value} />
+	const baseButtons = props.themeColors.map((value: ThemeColor, index: number) => {
+        const backgroundColor = value.backgroundColor;
+		const borderColor = mix(value.backgroundColor, props.borderShift);
+        const foregroundColor = value.invertForegroundColor ? props.backgroundColor : props.foregroundColor;
+		return <ButtonExample key={index} backgroundColor={backgroundColor} foregroundColor={foregroundColor} borderColor={borderColor} contrastRatio={props.contrastRatio} buttonText={backgroundColor} />
 	});
 	const hoverButtons = props.themeColors.map((value, index) => {
-		const backgroundColor = mix(value, props.hoverShift);
-		const borderColor = mix(value, props.borderShift);
-		return <ButtonExample key={index} backgroundColor={backgroundColor} foregroundColor={props.foregroundColor} borderColor={borderColor} contrastRatio={props.contrastRatio} buttonText={backgroundColor} />
+		const backgroundColor = mix(value.backgroundColor, props.hoverShift);
+		const borderColor = mix(value.backgroundColor, props.borderShift);
+        const foregroundColor = value.invertForegroundColor ? props.backgroundColor : props.foregroundColor;
+		return <ButtonExample key={index} backgroundColor={backgroundColor} foregroundColor={foregroundColor} borderColor={borderColor} contrastRatio={props.contrastRatio} buttonText={backgroundColor} />
 	});
 	const activeButtons = props.themeColors.map((value, index) => {
-		const backgroundColor = mix(value, props.activeShift);
-		const borderColor = mix(value, props.borderShift);
-		return <ButtonExample key={index} backgroundColor={backgroundColor} foregroundColor={props.foregroundColor} borderColor={borderColor} contrastRatio={props.contrastRatio} buttonText={backgroundColor} />
+		const backgroundColor = mix(value.backgroundColor, props.activeShift);
+		const borderColor = mix(value.backgroundColor, props.borderShift);
+        const foregroundColor = value.invertForegroundColor ? props.backgroundColor : props.foregroundColor;
+		return <ButtonExample key={index} backgroundColor={backgroundColor} foregroundColor={foregroundColor} borderColor={borderColor} contrastRatio={props.contrastRatio} buttonText={backgroundColor} />
 	});
 	return <div>
 		<h3>Examples</h3>

@@ -18,7 +18,6 @@ export function ButtonPanel(props: StateWithDispatch) {
 		<h2>Buttons</h2>
 		<div className="buttonPanel">
 			<ButtonStyles {...props} />
-			{/* <div><ContrastCheckers {...props} /></div> */}
 			<ButtonExamples {...props} />
 		</div>
 	</div>;

@@ -1,11 +1,15 @@
 import Color from "color";
 
+export type ThemeColor = {
+	backgroundColor: string;
+	invertForegroundColor: boolean;
+};
 export type State = {
 	foregroundColor: string;
 	backgroundColor: string;
 	contrastRatio: number;
 	themeColorCount: number;
-	themeColors: string[];
+	themeColors: ThemeColor[];
 	borderShift: number;
 	hoverShift: number;
 	activeShift: number;
@@ -16,7 +20,10 @@ export const initialState: State = {
 	backgroundColor: "#fff",
 	contrastRatio: 7,
 	themeColorCount: 3,
-	themeColors: ["#daa520", "#d1e7dd", "#0d6efd"],
+	themeColors: [
+		{ backgroundColor: "#daa520", invertForegroundColor: false },
+		{ backgroundColor: "#d1e7dd", invertForegroundColor: false },
+		{ backgroundColor: "#0d6efd", invertForegroundColor: false }],
 	borderShift: -20,
 	hoverShift: -15,
 	activeShift: -20,
@@ -27,7 +34,7 @@ export type Action =
 	| { type: 'set-background-color', value: string }
 	| { type: 'set-contrast-ratio', value: number }
 	| { type: 'set-theme-color-count', value: number }
-	| { type: 'set-theme-color', index: number, value: string }
+	| { type: 'set-theme-color', index: number, value: ThemeColor }
 	| { type: 'set-border-shift', value: number }
 	| { type: 'set-hover-shift', value: number }
 	| { type: 'set-active-shift', value: number };
@@ -50,13 +57,13 @@ export function reducer(state: State, action: Action): State {
 				contrastRatio: action.value,
 			}
 		case 'set-theme-color-count':
-			const x = [];
+			const x: ThemeColor[] = [];
 			const rotation = 360 / action.value;
 			let lastColor = '#cacaca';
 			for (let index = 0; index < action.value; index++) {
-				lastColor = state.themeColors[index]
+				lastColor = state.themeColors[index]?.backgroundColor
 					?? Color(lastColor).rotate(rotation).hex().toLocaleLowerCase();
-				x.push(lastColor);
+				x.push({ backgroundColor: lastColor, invertForegroundColor: false });
 			}
 			return {
 				...state,
