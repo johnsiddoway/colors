@@ -3,6 +3,7 @@ import { ColorPicker } from "../pickers/color-picker";
 import { ContrastPicker } from "../pickers/contrast-picker";
 import { CountPicker } from "../pickers/count-picker";
 import { ThemeColorPicker } from "../pickers/theme-color-picker";
+import styles from "./picker-panel.module.scss";
 
 export interface Props extends State {
 	dispatch: React.Dispatch<Action>
@@ -11,6 +12,7 @@ export function PickerPanel({ foregroundColor, backgroundColor, contrastRatio, t
 	const themeColorPickers = [];
 	for (let index = 0; index < themeColorCount; index++) {
 		themeColorPickers.push(<ThemeColorPicker key={index}
+			index={index}
 			backgroundColor={themeColors[index].backgroundColor}
 			invertForegroundColor={themeColors[index].invertForegroundColor}
 			onChange={(value: ThemeColor) => dispatch({ type: 'set-theme-color', index, value })}
@@ -18,7 +20,7 @@ export function PickerPanel({ foregroundColor, backgroundColor, contrastRatio, t
 		);
 	}
 
-	return <div className="pickerPanel column-with-gap">
+	return <div className={styles.panel}>
 		<h2>Base Colors</h2>
 		<ColorPicker color={foregroundColor} onChange={(value: string) => dispatch({ type: 'set-foreground-color', value })} label="Text" />
 		<ColorPicker color={backgroundColor} onChange={(value: string) => dispatch({ type: 'set-background-color', value })} label="Background" />

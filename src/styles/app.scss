@@ -38,10 +38,6 @@ label {
 	font-weight: bold;
 }
 
-.pickerPanel {
-	width: 15rem;
-}
-
 .buttonPanel {
 	@include make-flex($column-gap: 5rem);
 }
