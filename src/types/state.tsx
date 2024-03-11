@@ -16,7 +16,7 @@ export type State = {
 }
 
 export const initialState: State = {
-	foregroundColor: "#292521",
+	foregroundColor: "#211905",
 	backgroundColor: "#fff",
 	contrastRatio: 7,
 	themeColorCount: 3,

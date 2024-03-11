@@ -3,7 +3,6 @@ import { ColorPicker } from "../pickers/color-picker";
 import { ContrastPicker } from "../pickers/contrast-picker";
 import { CountPicker } from "../pickers/count-picker";
 import { ThemeColorPicker } from "../pickers/theme-color-picker";
-import styles from "./picker-panel.module.scss";
 
 export interface Props extends State {
 	dispatch: React.Dispatch<Action>
@@ -20,7 +19,7 @@ export function PickerPanel({ foregroundColor, backgroundColor, contrastRatio, t
 		);
 	}
 
-	return <div className={styles.panel}>
+	return <div className="pickerPanel">
 		<h2>Base Colors</h2>
 		<ColorPicker color={foregroundColor} onChange={(value: string) => dispatch({ type: 'set-foreground-color', value })} label="Text" />
 		<ColorPicker color={backgroundColor} onChange={(value: string) => dispatch({ type: 'set-background-color', value })} label="Background" />
