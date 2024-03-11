@@ -14,7 +14,7 @@ export function App() {
 			<PickerPanel {...state} dispatch={dispatch} />
 		</div>
 		<div className="themeColorPanel">
-			<ThemeColorPanel {...state} dispath={dispatch} />
+			<ThemeColorPanel {...state} dispatch={dispatch} />
 		</div>
 		<div className="examplesPanel">
 			<ButtonPanel {...state} dispatch={dispatch} />
