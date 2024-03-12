@@ -28,24 +28,24 @@ footer {
 
 main {
 	@extend %container;
-	@include make-flex($column-gap: 5rem, $align-items: inherit);
+	@include make-flex($column-gap: 1rem, $align-items: inherit);
 }
 
 label {
 	font-weight: bold;
 }
 
-.pickerPanel {
-	flex: 2 2 0;
-}
+// .pickerPanel {
+// 	flex: 17 17 0;
+// }
 
-.themeColorPanel {
-	flex: 2 2 0;
-}
+// .themeColorPanel {
+// 	flex: 17 17 0;
+// }
 
-.examplesPanel {
-	flex: 4 4 0;
-}
+// .examplesPanel {
+// 	flex: 71 71 0;
+// }
 
 // .buttonPanel {
 // 	@include make-flex($column-gap: 5rem);

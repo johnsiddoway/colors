@@ -1,9 +1,11 @@
 @import "../../styles/mixins";
 
 .rangePicker {
-    .inputGroup {
-        @include make-flex();
-    }
+    max-width: 15rem;
+}
+
+.inputGroup {
+    @include make-flex();
 }
 
 .value {
