@@ -1,7 +1,14 @@
 @import "../../styles/mixins";
 
-.rangePicker {
+.picker {
+    display: block;
+    width: 100%;
     max-width: 15rem;
+    position: relative;
+    outline: none;
+    * {
+        outline: none;
+    }
 }
 
 .inputGroup {

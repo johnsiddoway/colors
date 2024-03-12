@@ -43,6 +43,13 @@ label {
 // 	flex: 17 17 0;
 // }
 
+.examplesPanel {
+	.examples {
+		display: flex;
+		gap: 1rem;
+	}
+}
+
 // .examplesPanel {
 // 	flex: 71 71 0;
 // }
