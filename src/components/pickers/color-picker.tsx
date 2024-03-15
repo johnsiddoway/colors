@@ -4,19 +4,18 @@ import { HexColorPicker } from "react-colorful";
 import styles from "./color-picker.module.scss";
 
 export interface ThemeColorPickerProps {
-    backgroundColor: string;
+    color: string;
     label: string;
     onChange: (color: string) => void;
 };
-export function ColorPicker({ backgroundColor, label, onChange }: ThemeColorPickerProps) {
+export function ColorPicker({ color, label, onChange }: ThemeColorPickerProps) {
 	const [isOpen, toggle] = useState(false);
-	const [color, setColor] = useState(backgroundColor);
 	const popover = useRef();
 	const close = useCallback(() => toggle(false), []);
 	useClickOutside(popover, close);
 
 	const popoverDisplay = isOpen
-		? <div className={styles.popup} ref={popover}><HexColorPicker color={backgroundColor} onChange={onChange} /></div>
+		? <div className={styles.popup} ref={popover}><HexColorPicker color={color} onChange={onChange} /></div>
 		: <></>;
 
 	return <div className={styles.picker}>
@@ -24,8 +23,8 @@ export function ColorPicker({ backgroundColor, label, onChange }: ThemeColorPick
 			<label htmlFor={label}>{label}</label>
 		</div>
 		<div className={styles.inputRow}>
-			<input id={label} type="text" className={styles.input} value={color} onBlur={() => onChange(color)} onChange={(e) => setColor(e.target.value)} />
-			<div className={styles.swatch} style={{ backgroundColor: backgroundColor }} onClick={() => toggle(true)} />
+			<input id={label} type="text" className={styles.input} value={color} readOnly />
+			<div className={styles.swatch} style={{ backgroundColor: color }} onClick={() => toggle(true)} />
 			{popoverDisplay}
 		</div>
 	</div>;

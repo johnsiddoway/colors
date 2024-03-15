@@ -9,8 +9,8 @@ export function StylePanel(props: PanelProps) {
 	];
 	return <>
 		<h2>Base Colors</h2>
-		<ColorPicker backgroundColor={props.foregroundColor} onChange={(value: string) => props.dispatch({ type: 'set-foreground-color', value })} label="Text" />
-		<ColorPicker backgroundColor={props.backgroundColor} onChange={(value: string) => props.dispatch({ type: 'set-background-color', value })} label="Background" />
+		<ColorPicker color={props.foregroundColor} onChange={(value: string) => props.dispatch({ type: 'set-foreground-color', value })} label="Text" />
+		<ColorPicker color={props.backgroundColor} onChange={(value: string) => props.dispatch({ type: 'set-background-color', value })} label="Background" />
 		<SelectPicker name="contract-ratio" value={props.contrastRatio} label="Contract Ratio" options={contrastOptions} onChange={(value: any) => props.dispatch({ type: "set-contrast-ratio", value: parseInt(value) })} />
 		<RangePicker id="hover" onChange={(value) => props.dispatch({ type: 'set-hover-shift', value: value })} value={props.hoverShift} label="Hover Color Shift" />
 		<RangePicker id="active" onChange={(value) => props.dispatch({ type: 'set-active-shift', value: value })} value={props.activeShift} label="Active Color Shift" />

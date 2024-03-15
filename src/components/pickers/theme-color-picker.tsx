@@ -13,7 +13,6 @@ export interface ThemeColorPickerProps {
 };
 export function ThemeColorPicker({ index, backgroundColor, invertForegroundColor, label, onChange }: ThemeColorPickerProps) {
 	const [isOpen, toggle] = useState(false);
-	const [color, setColor] = useState(backgroundColor);
 	const popover = useRef();
 	const close = useCallback(() => toggle(false), []);
 	useClickOutside(popover, close);
@@ -30,8 +29,7 @@ export function ThemeColorPicker({ index, backgroundColor, invertForegroundColor
 			<label htmlFor={foregroundId} className={styles.foregroundColorLabel}>Text Color</label>
 		</div>
 		<div className={styles.inputRow}>
-			<input id={backgroundId} type="text" className={styles.backgroundColorInput} value={color}
-				onBlur={() => onChange({ backgroundColor: color, invertForegroundColor })} onChange={(e) => setColor(e.target.value)} />
+			<input id={backgroundId} type="text" className={styles.backgroundColorInput} value={backgroundColor} readOnly />
 			<div className={styles.backgroundColorSwatch} style={{ backgroundColor: backgroundColor }} onClick={() => toggle(true)} />
 			<input id={foregroundId} type="checkbox" checked={invertForegroundColor} className={styles.foregroundColorInput}
 				onChange={() => onChange({ backgroundColor, invertForegroundColor: !invertForegroundColor })} />
