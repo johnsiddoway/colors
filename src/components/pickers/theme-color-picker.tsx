@@ -1,7 +1,7 @@
 import { useCallback, useRef, useState } from "react";
 import { HexColorPicker } from "react-colorful";
 import { useClickOutside } from "../../hooks/useClickOutside";
-import { ThemeColor } from "../../types/state";
+import { ThemeColor } from "../../types";
 import styles from "./theme-color-picker.module.scss";
 
 export interface ThemeColorPickerProps {
@@ -20,7 +20,7 @@ export function ThemeColorPicker({ index, backgroundColor, invertForegroundColor
 
 	const backgroundId = index + "-background";
 	const foregroundId = index + "-foreground";
-	const popoverDisplay = isOpen ? <div className={styles.backgroundColorPopup} ref={popover}><HexColorPicker color={backgroundColor}
+	const popoverDisplay = isOpen ? <div className={styles.popup} ref={popover}><HexColorPicker color={backgroundColor}
 		onChange={(backgroundColor) => onChange({ backgroundColor, invertForegroundColor })} /></div>
 		: <></>;
 

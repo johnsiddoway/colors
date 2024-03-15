@@ -1,12 +1,7 @@
-import { Action, State } from "../../types/state";
-import { ColorPicker } from "../pickers/color-picker";
-import { RangePicker } from "../pickers/range-picker";
-import { SelectPicker } from "../pickers/select-picker";
+import { ColorPicker, RangePicker, SelectPicker } from "../pickers";
+import { PanelProps } from "./panel-props";
 
-export interface Props extends State {
-	dispatch: React.Dispatch<Action>
-}
-export function PickerPanel(props: Props) {
+export function StylePanel(props: PanelProps) {
 	const contrastOptions: any[] = [
 		{ value: 3, label: "3:1 (AA large text)" },
 		{ value: 4.5, label: "4.5:1 (AAA large text)" },

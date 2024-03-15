@@ -1,11 +1,8 @@
-import { Action, State, ThemeColor } from "../../types/state";
-import { SelectPicker } from "../pickers/select-picker";
-import { ThemeColorPicker } from "../pickers/theme-color-picker";
+import { ThemeColor } from "../../types";
+import { SelectPicker, ThemeColorPicker } from "../pickers";
+import { PanelProps } from "./panel-props";
 
-export interface Props extends State {
-	dispatch: React.Dispatch<Action>;
-}
-export function ThemeColorPanel({ themeColorCount, themeColors, dispatch }: Props) {
+export function ThemeColorPanel({ themeColorCount, themeColors, dispatch }: PanelProps) {
 	const themeColorCountOptions = [...Array(12)].map((e, i) => { return { value: i+1, label: i+1 }});
 	const themeColorPickers = themeColors.map((themeColor, index) => <ThemeColorPicker key={index}
 		index={index}

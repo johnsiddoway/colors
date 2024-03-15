@@ -1,5 +1,5 @@
 import Color from "color";
-import { State, ThemeColor } from "../../types/state";
+import { State, ThemeColor } from "../../types";
 import { CSSProperties } from "react";
 
 interface ButtonExampleProps {

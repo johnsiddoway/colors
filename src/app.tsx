@@ -1,11 +1,6 @@
 import { useReducer } from 'react';
-import { PickerPanel } from "./components/picker-panel/picker-panel";
-import { ThemeColorPanel } from './components/theme-color-panel/theme-color-panel';
-import { InteractivePanel } from './components/button-panels/interactive-panel';
-import { NormalPanel } from './components/button-panels/normal-panel';
-import { HoverPanel } from './components/button-panels/hover-panel';
-import { ActivePanel } from './components/button-panels/active-panel';
-import { initialState, reducer } from "./types/state";
+import { ActivePanel, HoverPanel, InteractivePanel, NormalPanel, StylePanel, ThemeColorPanel } from "./components";
+import { initialState, reducer } from "./types";
 import './styles/app.scss';
 
 export function App() {
@@ -19,7 +14,7 @@ export function App() {
 
 	return <>
 		<div className="pickerPanel">
-			<PickerPanel {...props} />
+			<StylePanel {...props} />
 		</div>
 		<div className="themeColorPanel">
 			<ThemeColorPanel {...props} />

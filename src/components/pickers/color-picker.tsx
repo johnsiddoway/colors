@@ -16,7 +16,7 @@ export function ColorPicker({ backgroundColor, label, onChange }: ThemeColorPick
 	useClickOutside(popover, close);
 
 	const popoverDisplay = isOpen
-		? <div className={styles.backgroundColorPopup} ref={popover}><HexColorPicker color={backgroundColor} onChange={onChange} /></div>
+		? <div className={styles.popup} ref={popover}><HexColorPicker color={backgroundColor} onChange={onChange} /></div>
 		: <></>;
 
 	return <div className={styles.picker}>
@@ -24,8 +24,8 @@ export function ColorPicker({ backgroundColor, label, onChange }: ThemeColorPick
 			<label htmlFor={label}>{label}</label>
 		</div>
 		<div className={styles.inputRow}>
-			<input id={label} type="text" className={styles.backgroundColorInput} value={color} onBlur={() => onChange(color)} onChange={(e) => setColor(e.target.value)} />
-			<div className={styles.backgroundColorSwatch} style={{ backgroundColor: backgroundColor }} onClick={() => toggle(true)} />
+			<input id={label} type="text" className={styles.input} value={color} onBlur={() => onChange(color)} onChange={(e) => setColor(e.target.value)} />
+			<div className={styles.swatch} style={{ backgroundColor: backgroundColor }} onClick={() => toggle(true)} />
 			{popoverDisplay}
 		</div>
 	</div>;

@@ -9,9 +9,50 @@
     }
 }
 
+%row {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.labelRow {
+    @extend %row;
+    justify-content: space-between;
+
+    label {
+        cursor: pointer;
+        user-select: none;
+    }
+}
+
+.inputRow {
+    @extend %row;
+    &:focus-within,
+    &:focus-visible {
+        box-shadow: 0 0.25rem 0.5rem 0.25rem #495057;
+    }
+}
+
 .input {
     width: 100%;
-    max-width: calc(100% - 2.375rem - 2.375rem);
+    max-width: calc(100% - 2.375rem);
     border: 1px solid currentColor;
     padding: 0.375rem 0.75rem;
+}
+
+.popup {
+    position: absolute;
+    top: 0;
+    left: calc(100% + 0.5rem);
+    border-radius: 9px;
+    z-index: 10;
+}
+
+.swatch {
+    width: 100%;
+    max-width: 2.375rem;
+    border: 1px solid currentColor;
+    border-radius: 0;
+    border-left: 0;
 }
