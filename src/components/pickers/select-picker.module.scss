@@ -10,6 +10,7 @@
 
 .select {
     @extend %input;
+    height: 2.375rem;
 
     &:focus-within,
     &:focus-visible {

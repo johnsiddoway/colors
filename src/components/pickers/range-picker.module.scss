@@ -6,6 +6,7 @@
 
 .inputRow {
     @extend %inputRow;
+    height: 2.375rem; // Force the height to match text inputs
 }
 
 .input {
