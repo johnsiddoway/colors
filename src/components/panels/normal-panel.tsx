@@ -1,20 +1,21 @@
 import { PanelProps } from "./panel-props";
 import styles from "./base.module.scss";
+import { ButtonExample } from "./button-examples";
 
 export function NormalPanel(props: PanelProps) {
     const buttons = props.themeColors.map((value, index) => {
-        const style: React.CSSProperties = {
-            "--background-color": value.backgroundColor,
-            "--background-color-hover": value.backgroundColor,
-            "--background-color-active": value.backgroundColor,
-            "--color": value.invertForegroundColor ? props.backgroundColor : props.foregroundColor,
-            "--border-color": props.foregroundColor,
-        };
         return <div key={index}>
             <div className={styles.label}>Theme Color {index + 1}</div>
-            <button className={styles.button} style={style}>{value.backgroundColor}</button>
-            </div>;
-    })
+            <ButtonExample
+                borderColor={props.foregroundColor}
+                foregroundColor={value.invertForegroundColor ? props.backgroundColor : props.foregroundColor}
+                backgroundColor={value.backgroundColor}
+                hoverColor={value.backgroundColor}
+                activeColor={value.backgroundColor}
+                buttonText={value.backgroundColor}
+                contrastRatio={props.contrastRatio} />
+        </div>;
+    });
     return <div>
         <h3 className={styles.heading}>Normal Buttons</h3>
         {buttons}
