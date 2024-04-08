@@ -1,12 +1,12 @@
 import { useCallback, useRef, useState } from "react";
 import { useClickOutside } from "../../hooks/useClickOutside";
-import { HexColorPicker } from "react-colorful";
+import { HexColorInput, HexColorPicker } from "react-colorful";
 import styles from "./color-picker.module.scss";
 
 export interface ThemeColorPickerProps {
-    color: string;
-    label: string;
-    onChange: (color: string) => void;
+	color: string;
+	label: string;
+	onChange: (color: string) => void;
 };
 export function ColorPicker({ color, label, onChange }: ThemeColorPickerProps) {
 	const [isOpen, toggle] = useState(false);
@@ -23,7 +23,7 @@ export function ColorPicker({ color, label, onChange }: ThemeColorPickerProps) {
 			<label htmlFor={label}>{label}</label>
 		</div>
 		<div className={styles.inputRow}>
-			<input id={label} type="text" className={styles.input} value={color} readOnly />
+			<HexColorInput id={label} className={styles.input} color={color} onChange={onChange} />
 			<div className={styles.swatch} style={{ backgroundColor: color }} onClick={() => toggle(true)} />
 			{popoverDisplay}
 		</div>
