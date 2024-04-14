@@ -34,55 +34,45 @@ canvas {
 	*,
 	*::before,
 	*::after {
-	animation-duration: 0.01ms !important;
-	animation-iteration-count: 1 !important;
-	transition-duration: 0.01ms !important;
-	scroll-behavior: auto !important;
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
 	}
 }
 
-%heading {
-	line-height: $headings-line-height;
-	margin-top: 0;
-	margin-bottom: $headings-margin-bottom;
+@mixin heading($margin-bottom: 1rem, $margin-top: 0, $font-size: 1rem) {
+	margin-top: $margin-top;
+	margin-bottom: $margin-bottom;
 	font: inherit;
+	font-size: $font-size;
 }
 
 h1 {
-	@extend %heading;
-	font-size: $h1-font-size;
+	@include heading($font-size: 2.5rem);
 }
 
 h2 {
-	@extend %heading;
-	font-size: $h2-font-size;
+	@include heading($font-size: 2rem);
 }
 
 h3 {
-	@extend %heading;
-	font-size: $h3-font-size;
+	@include heading($font-size: 1.75rem);
 }
 
 h4 {
-	@extend %heading;
-	font-size: $h4-font-size;
+	@include heading($font-size: 1.5rem);
 }
 
 h5 {
-	@extend %heading;
-	font-size: $h5-font-size;
+	@include heading($font-size: 1.25rem);
 }
 
 h6 {
-	@extend %heading;
-	font-size: $h6-font-size;
+	@include heading($font-size: 1rem);
 }
 
-p {
-	margin-top: 0;
-	margin-bottom: $paragraph-margin-bottom;
-}
-
+p,
 ol,
 ul,
 dl {
